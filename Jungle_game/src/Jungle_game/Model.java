@@ -56,7 +56,7 @@ public class Model {
 
     // check the available chessman which is still alive
     // return a list of string (name of piece)
-    private List<String> alivePiecesCheck(){
+    public List<String> alivePiecesCheck(){
         List<String> PieceName = new ArrayList<String>();
         return PieceName;
     }
