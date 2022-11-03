@@ -42,14 +42,14 @@ public class Model {
     }
 
     // return a Boolean value to check whether the position is available or not
-    public boolean posiCheck(){
+    public boolean posiCheck(int x, int y, String pieceName){
         boolean result = false;
         return result;
     }
 
     // Check whether the pieces are in which position,
     // return a list with two integer (x,y)
-    public int[] piecesInfo(){
+    public int[] piecesInfo(String pieceName){
         int[] coordinator=new int[2];
         return coordinator;
     }
