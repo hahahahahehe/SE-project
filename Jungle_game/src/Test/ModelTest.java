@@ -1,4 +1,5 @@
-package Jungle_game;
+package Jungle_game.src.Test;
+import Jungle_game.src.Jungle_game.Model;
 
 import org.junit.jupiter.api.Test;
 
@@ -75,6 +76,44 @@ class ModelTest {
 
     @Test
     void move() {
+        model.init();
+        //move from land to land
+        model.move("B1" , 2 , 1);
+        assertEquals("B1",model.posiInfo(2,1));
+        assertEquals(" ",model.posiInfo(3, 1));
+        model.move("B1" , 3 , 1);
+        //move from land to river
+        model.move("B1" , 4 , 2);
+        assertEquals("B1RV",model.posiInfo(4,2));
+        assertEquals(" ",model.posiInfo(3, 1));
+        //move from river to land
+        model.move("B1" , 3 , 1);
+        assertEquals("B1",model.posiInfo(3,1));
+        assertEquals("RV",model.posiInfo(4, 2));
+        //move from land to trap
+        model.move("B1" , 1 , 3);
+        assertEquals("B1TR",model.posiInfo(1,3));
+        assertEquals(" ",model.posiInfo(3, 1));
+        //move from trap to land
+        model.move("B1" , 3 , 1);
+        assertEquals("B1",model.posiInfo(3,1));
+        assertEquals("TR",model.posiInfo(1, 3));
+        //move from land to piece
+        model.move("B1" , 7 , 1);
+        assertEquals("B1",model.posiInfo(7,1));
+        assertEquals(" ",model.posiInfo(3, 1));
+        assertEquals(false , model.alivePiecesCheck().contains("A8"));
+        //move from land to den
+        model.move("B1" , 9 , 4);
+        assertEquals("B1DE",model.posiInfo(9,4));
+        assertEquals(" ",model.posiInfo(7, 1));
+    }
 
+    @Test
+    void remove() {
+        model.init();
+        model.remove("A8");
+        assertEquals(false , model.alivePiecesCheck().contains("A8"));
+        assertEquals(" ",model.posiInfo(7,1));
     }
 }
