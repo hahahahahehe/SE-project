@@ -61,12 +61,13 @@ public class Model {
         return PieceName;
     }
 
-//  move the corresponding piece by analysing command user entered
-//   direction: (1->up 2->down 3->left 4->right)
-    public void move (String userCommand){
-        if(userCommand == null){
-            throw new IllegalArgumentException();
-        }
+//  move the corresponding piece to a new position
+    public void move (String pieceName, int x , int y){
+    }
+
+//  remove the corresponding piece
+    public void remove (String pieceName){
+
     }
 
 }
