@@ -65,16 +65,6 @@ class ModelTest {
     }
 
     @Test
-    void piecesInfo() {
-
-    }
-
-    @Test
-    void alivePiecesCheck() {
-
-    }
-
-    @Test
     void move() {
         model.init();
         //move from land to land
@@ -107,6 +97,7 @@ class ModelTest {
         model.move("B1" , 9 , 4);
         assertEquals("B1DE",model.posiInfo(9,4));
         assertEquals(" ",model.posiInfo(7, 1));
+        assertArrayEquals(new int[]{9,4},model.piecesInfo("4A1"));
     }
 
     @Test
