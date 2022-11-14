@@ -220,7 +220,6 @@ public class Model {
                 continue;
             }
         }
-        return "not allow";
     }
 
 //  remove the corresponding piece
