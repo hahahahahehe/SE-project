@@ -205,7 +205,7 @@ public class Model {
         int[] aim = new int[]{posi[0] + dif[0] , posi[1] + dif[1]};
         String a;
         while(true){
-            if(aim[0] < 1 || aim[0] > 9 || aim[1]<1||aim[1]>7) return;
+            if(aim[0] < 1 || aim[0] > 9 || aim[1]<1||aim[1]>7) return "not allow";
             a = posiCheck(aim[0], aim[1], pieceName); 
             if(a.equals("allow")){
                 move(pieceName , aim[0] , aim[1]);
