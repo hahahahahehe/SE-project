@@ -1,4 +1,4 @@
-package Test;
+package Jungle_game;
 
 
 import Jungle_game.Model;
@@ -25,8 +25,8 @@ class ModelTest {
     @Test
     void posiInfo() {
         model.init();
-        assertEquals("0A7",model.posiInfo(9,7)); // A's piece
-        assertEquals("0B3",model.posiInfo(2,2)); // B's piece
+        assertEquals("0B7",model.posiInfo(9,7)); // A's piece
+        assertEquals("0A3",model.posiInfo(2,2)); // B's piece
         assertEquals("2",model.posiInfo(1,3)); // trap
         assertEquals("0",model.posiInfo(5,4)); // land
         assertEquals("3",model.posiInfo(1,4)); // den
@@ -42,65 +42,66 @@ class ModelTest {
         List<String> alive3 = Arrays.asList("B1","B3","B6","B8");
         model.init();
         assertEquals("not finish",model.winnerCheck());// Not finish
-        model.move("A1" , 1 ,4);
-        assertEquals("A win",model.winnerCheck()); // Player A wins
-        model.init();
-        model.move("B1" , 9 ,4); 
+        model.move("B1" , 1 ,4);
         assertEquals("B win",model.winnerCheck()); // Player B wins
+        model.init();
+        model.move("A1" , 9 ,4);
+        assertEquals("A win",model.winnerCheck()); // Player A wins
     }
 
     @Test
     void posiCheck() {
-        String P1 = "B1";
-        String P2 = "A3";
-        String P3 = "B7";
-        String P4 = "A8";
+        String P1 = "A1";
+        String P2 = "B3";
+        String P3 = "A7";
+        String P4 = "B8";
 
         model.init();
-        assertEquals(true,model.posiCheck(4,2,P1)); // B1 can move into river
-        assertEquals(false,model.posiCheck(4,2,P2)); // A3 cannot move into river
-        assertEquals(false,model.posiCheck(1,1,P2)); // A3 cannot capture B7
-        assertEquals(true,model.posiCheck(9,1,P3)); // B7 can capture A6
-        assertEquals(false,model.posiCheck(3,1,P3)); // B7 cannot capture B1
-        assertEquals(false,model.posiCheck(1,4,P1)); // B1 cannot move to its own den
-        assertEquals(true,model.posiCheck(9,4,P1)); // B1 can move to the opponent's den
-        assertEquals(false,model.posiCheck(3,1,P4)); // A8 cannot capture B1
-        assertEquals(true,model.posiCheck(7,1,P1)); // B1 can capture A8
+        assertEquals("allow",model.posiCheck(4,2,P1)); // A1 can move into river
+        assertEquals("not allow",model.posiCheck(4,2,P2)); // A3 cannot move into river
+        assertEquals("not allow",model.posiCheck(1,1,P2)); // A3 cannot capture B7
+        assertEquals("allow",model.posiCheck(9,1,P3)); // A7 can capture B6
+        assertEquals("not allow",model.posiCheck(3,1,P3)); // A7 cannot capture A1
+        assertEquals("not allow",model.posiCheck(1,4,P1)); // A1 cannot move to its own den
+        assertEquals("allow",model.posiCheck(9,4,P1)); // A1 can move to the opponent's den
+        assertEquals("not allow",model.posiCheck(3,1,P4)); // B8 cannot capture A1
+        assertEquals("allow",model.posiCheck(7,1,P1)); // A1 can capture B8
     }
 
     @Test
     void move() {
         model.init();
         //move from land to land
-        model.move("B1" , 2 , 1);
-        assertEquals("0B1",model.posiInfo(2,1));
+        assertEquals("0",model.getLandIndex("0A1"));
+        model.move("A1" , 2 , 1);
+        assertEquals("0A1",model.posiInfo(2,1));
         assertEquals("0",model.posiInfo(3, 1));
-        model.move("B1" , 3 , 1);
+        model.move("A1" , 3 , 1);
         //move from land to river
-        model.move("B1" , 4 , 2);
-        assertEquals("1B1",model.posiInfo(4,2));
+        model.move("A1" , 4 , 2);
+        assertEquals("1A1",model.posiInfo(4,2));
         assertEquals("0",model.posiInfo(3, 1));
         //move from river to land
-        model.move("B1" , 3 , 1);
-        assertEquals("0B1",model.posiInfo(3,1));
+        model.move("A1" , 3 , 1);
+        assertEquals("0A1",model.posiInfo(3,1));
         assertEquals("1",model.posiInfo(4, 2));
         //move from land to trap
-        model.move("B1" , 1 , 3);
-        assertEquals("2B1",model.posiInfo(1,3));
+        model.move("A1" , 1 , 3);
+        assertEquals("2A1",model.posiInfo(1,3));
         assertEquals("0",model.posiInfo(3, 1));
         //move from trap to land
-        model.move("B1" , 3 , 1);
-        assertEquals("0B1",model.posiInfo(3,1));
+        model.move("A1" , 3 , 1);
+        assertEquals("0A1",model.posiInfo(3,1));
         assertEquals("2",model.posiInfo(1, 3));
         //move from land to piece
-        model.setAuserName("A");
-        model.move("B1" , 7 , 1);
-        assertEquals("0B1",model.posiInfo(7,1));
+        model.setBuserName("B");
+        model.move("A1" , 7 , 1);
+        assertEquals("0A1",model.posiInfo(7,1));
         assertEquals("0",model.posiInfo(3, 1));
-        assertEquals(false , model.alivePiecesCheck("A").contains("A8"));
+        assertEquals(false , model.alivePiecesCheck("B").contains("B8"));
         //move from land to den
-        model.move("B1" , 9 , 4);
-        assertEquals("3B1",model.posiInfo(9,4));
+        model.move("A1" , 9 , 4);
+        assertEquals("3A1",model.posiInfo(9,4));
         assertEquals("0",model.posiInfo(7, 1));
     }
 
@@ -110,6 +111,5 @@ class ModelTest {
         model.setAuserName("A");
         model.remove("A8");
         assertEquals(false , model.alivePiecesCheck("A").contains("A8"));
-        assertEquals(" ",model.posiInfo(7,1));
     }
 }
