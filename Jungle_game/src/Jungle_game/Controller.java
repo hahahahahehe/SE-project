@@ -1,6 +1,6 @@
 package Jungle_game;
 
-import Jungle_game.src.Jungle_game.Model;
+
 
 import java.util.Scanner;
 
