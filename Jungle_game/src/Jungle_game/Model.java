@@ -199,7 +199,7 @@ public class Model {
 
 //  left 0 right 1 up 2 down 3
     private static int[][] differs = new int[][]{{0,-1},{0,1},{-1,0},{1,0}};
-    public void move (String pieceName, int direction){
+    public String move (String pieceName, int direction){
         int[] dif = differs[direction];
         int[] posi = piecesInfo(pieceName);
         int[] aim = new int[]{posi[0] + dif[0] , posi[1] + dif[1]};
@@ -209,10 +209,10 @@ public class Model {
             a = posiCheck(aim[0], aim[1], pieceName); 
             if(a.equals("allow")){
                 move(pieceName , aim[0] , aim[1]);
-                return;
+                return "ok";
             }
             if(a.equals("not allow")){
-                return;
+                return "not allow";
             }
             if(a.equals("jump")){
                 aim[0] += dif[0];
@@ -220,6 +220,7 @@ public class Model {
                 continue;
             }
         }
+        return "not allow";
     }
 
 //  remove the corresponding piece
