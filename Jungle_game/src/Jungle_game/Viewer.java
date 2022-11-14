@@ -12,40 +12,9 @@ public class Viewer {
 //    1. start the game(to username)
 //    2. Refer to the User guide
 //    3. exit game
-public void displayMenu(){
-    loop: while (true){
-        System.out.println("---------------Welcome to the Jungle Game!---------------");
-        System.out.println("1: Play Game");
-        System.out.println("2: Game Guide");
-        System.out.println("3: Exit");
-        System.out.println("Please input your option in integer:");
-        Scanner scanner= new Scanner(System.in);
-        String option = scanner.next();
-
-        //linkedController.evalMenu(option);
-        switch (option){
-            case "1":{
-                System.out.println("Play Game");
-                displayAskUsername();
-
-                break;
-            }
-            case "2":{
-                displayUserGuide();
-                break;
-            }
-            case "3":{
-                System.out.println("Exit Now...");
-                break loop;
-            }
-            default:{
-                System.out.println("Please input the correct value");
-            }
-        }
-
-
+    public void displayMenu(String content){
+        print(content);
     }
-}
 
     //    display the user guide
     public void displayUserGuide(){
