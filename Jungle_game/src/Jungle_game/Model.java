@@ -3,7 +3,7 @@ package Jungle_game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Model {
+public class Model{
 
 // Fields
     private String AuserName,BuserName;
@@ -13,7 +13,12 @@ public class Model {
     private int win = -1;
     private int[] pieceNum = new int[]{8,8};
 
-// Functions
+
+    public Model() {
+
+    }
+
+    // Functions
     public String getAuserName() {
         return AuserName;
     }
@@ -220,7 +225,6 @@ public class Model {
                 continue;
             }
         }
-        return "not allow";
     }
 
 //  remove the corresponding piece

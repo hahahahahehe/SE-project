@@ -11,6 +11,9 @@ public class Gamer {
 
 //    Functions
     public static void main(String[] args) {
+        linkedController.linkedModel = linkedModel;
+        linkedController.linkedViewer = linkedViewer;
+        linkedViewer.linkedController = linkedController;
         linkedController.evalMenu();
 
     }

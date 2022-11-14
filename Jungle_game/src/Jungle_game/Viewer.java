@@ -3,11 +3,13 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class Viewer {
-    public static Controller linkedController = new Controller();
-    public static Model linkedModel = new Model();
+public class Viewer{
+    public Controller linkedController ;
 
-    //    Functions
+    public Viewer() {
+    }
+
+//    Functions
 
 //  Display the main menu for user to
 //    1. start the game(to username)
@@ -55,7 +57,20 @@ public class Viewer {
 //    a question: whether the string[][] board is public or not?
     public void displayBoard(String[][] board){
 
-        System.out.println(board);
+//        for (String[] traverseRow : board) {
+//            for (String ind : traverseRow) {
+//                System.out.printf("|%2s",ind);
+//            }
+//            System.out.println();
+//        }
+//        for (int row = 0; row < board.length; row++)
+//        {
+//            for (int ind = 0; ind < board[row].length; ind++) {
+//                System.out.print(board[row][ind] + " ");
+//            }
+//            System.out.println();
+//        }
+
         if(board.length == 0 || board == null){
             throw new IllegalArgumentException();
         }
@@ -69,7 +84,7 @@ public class Viewer {
 //            System.out.printf("Please %s choose Your movement", username);
     }
     public void displayMovementPanel(String content){
-        displayMovementPanel(content);
+        System.out.println(content);
     }
 
     public void displayAskUsername(){
