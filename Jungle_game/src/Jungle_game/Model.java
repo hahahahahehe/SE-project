@@ -90,12 +90,10 @@ public class Model {
 // In the den -> win, not in the den
 // (1)	lose    (2)	win    (3)	not finish (4) unknown name
 // return a string type to indicate the status
-    public String winnerCheck(String userName){
-        int nameIndex = userIndex(userName);
-        if(nameIndex == -1)return "unknown name";
+    public String winnerCheck(){
         if(win == -1) return "not finish";
-        if(win == nameIndex) return "win";
-        return "lose";
+        if(win == 0) return "A win";
+        return "B win";
     }
 
 
