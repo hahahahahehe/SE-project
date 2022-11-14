@@ -1,8 +1,25 @@
 package Jungle_game;
 
+import Jungle_game.src.Jungle_game.Model;
+
 import java.util.Scanner;
 
 public class Controller {
+    public Model linkedModel = new Model();
+
+    public void getuserAname(){
+        String UserA;
+        Scanner scanner = new Scanner(System.in);
+        UserA = scanner.nextLine();
+        linkedModel.setAuserName(UserA);
+    }
+
+    public void getuserBname(){
+        String UserB;
+        Scanner scanner = new Scanner(System.in);
+        UserB = scanner.nextLine();
+        linkedModel.setBuserName(UserB);
+    }
 
 //    Functions
 

@@ -16,6 +16,30 @@ public class Model {
 
     }
 
+    public String getAuserName() {
+        return AuserName;
+    }
+
+    public void setAuserName(String auserName) {
+        AuserName = auserName;
+    }
+
+    public String getBuserName() {
+        return BuserName;
+    }
+
+    public void setBuserName(String buserName) {
+        BuserName = buserName;
+    }
+
+    public String[][] getBoard() {
+        return board;
+    }
+
+    public void setBoard(String[][] board) {
+        this.board = board;
+    }
+
     //    initialize the game and all the pieces
     public void init(){
 
