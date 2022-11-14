@@ -97,7 +97,7 @@ public class Model {
     }
 
 
-    private String getLandIndex(String posiInfo){
+    public String getLandIndex(String posiInfo){
         return posiInfo.substring(0, 1);
     }
     private String getPieceName(String posiInfo){
@@ -169,22 +169,24 @@ public class Model {
     }
 
     private void setPosi(int x , int y , String content){
-        board[x-1][y-1] = content;
+        board[x-1][y-1] = new String(content);
     }
 //  move the corresponding piece to a new position
     public void move (String pieceName, int x , int y){
-        int[] posi = piecesInfo(pieceName);
+        int[] posi = new int[]{piecesInfo(pieceName)[0] , piecesInfo(pieceName)[1]};
         String aimInfo = posiInfo(x, y);
-        String aland = getLandIndex(posiInfo(posi[0], posi[1]));
+        String aland = get_land(pieceName);
+        setPosi(posi[0], posi[1], aland);
         
         int a , b;
         a = getUserIndex(pieceName); b = getRankIndex(pieceName);
         pieceInfo[a][b][0] = x; pieceInfo[a][b][1] = y;
-        setPosi(posi[0], posi[1], aland);
+        
         if(getLandIndex(aimInfo).equals("3")){
             if(a == 0 && x == 9) win = 0;
             if(a==1 && x==1) win = 1;
         }
+        
         if(getPieceName(aimInfo) == null){setPosi(x , y , aimInfo + pieceName);return;}
         remove(getPieceName(aimInfo));
         setPosi(x, y, getLandIndex(aimInfo) + pieceName);        
