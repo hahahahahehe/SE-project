@@ -7,7 +7,7 @@ public class Model {
 
 // Fields
     private String AuserName,BuserName;
-    private String[][] board = new String[9][];
+    public String[][] board = new String[9][];
     //A:0 b:1
     private int[][][] pieceInfo = new int[2][8][2];
     private int win = -1;
