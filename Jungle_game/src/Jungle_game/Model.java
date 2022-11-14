@@ -57,10 +57,11 @@ public class Model {
 
     // The position is river/trap/den/land.
     // return a String represent position information
-    // "1" represents river, "2" represents trap,
-    // "3" den, "4" land, "5A1" piece
-    public String posiInfo(int x, int y){
+    // "RV" represents river, "TR" represents trap,
+    // "DE" den, "  " land, "A1" piece
+    public static String posiInfo(int x, int y){
         String posi= new String();
+        posi = board[x-1][y-1];
         return posi;
     }
 
