@@ -11,11 +11,7 @@ public class Model {
 
 // Functions
 
-    //    get both user’s name
-    private void getUsername(){
-
-    }
-
+    //user
     public String getAuserName() {
         return AuserName;
     }
@@ -31,6 +27,8 @@ public class Model {
     public void setBuserName(String buserName) {
         BuserName = buserName;
     }
+
+    //board
 
     public String[][] getBoard() {
         return board;
