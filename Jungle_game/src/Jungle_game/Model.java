@@ -120,7 +120,7 @@ public class Model {
         int rp2 = 0; 
         if(rp == 0){
            if(piece == null) return "allow";
-           if(up == getUserIndex(piece)) return "now allow";
+           if(up == getUserIndex(piece)) return "not allow";
            if(aland.equals("1")){
                 if(land.equals("1")) return "allow";
                 return "not allow";
@@ -137,8 +137,12 @@ public class Model {
             }
             return "not allow";
         }
+        if(land.equals("3")){
+            if(up == 0 && x == 1) return "not allow";
+            if(up == 1 && x == 9) return "not allow";
+        }
         if(piece == null) return "allow";
-        if(up == getUserIndex(piece)) return "now allow";
+        if(up == getUserIndex(piece)) return "not allow";
         if(land.equals("2")){
             return "allow";
         }
