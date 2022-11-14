@@ -112,7 +112,8 @@ public class Model {
         int[] a = piecesInfo(pieceName);
         return getLandIndex(posiInfo(a[0], a[1]));
     }
-    public String posiCheck(String posi, String pieceName){
+    public String posiCheck(int x, int y, String pieceName){
+        String posi = posiInfo(x, y);
         String aland = get_land(pieceName);
         String land = getLandIndex(posi);
         String piece = getPieceName(posi);
@@ -200,7 +201,7 @@ public class Model {
         String a;
         while(true){
             if(aim[0] < 1 || aim[0] > 9 || aim[1]<1||aim[1]>7) return;
-            a = posiCheck(posiInfo(aim[0], aim[1]), pieceName); 
+            a = posiCheck(aim[0], aim[1], pieceName); 
             if(a.equals("allow")){
                 move(pieceName , aim[0] , aim[1]);
                 return;
