@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 
 public class Viewer {
-    public Controller linkedController = new Controller();
+    public static Controller linkedController = new Controller();
+    public static Model linkedModel = new Model();
 
     //    Functions
 
@@ -61,12 +62,15 @@ public class Viewer {
     }
 
     //    display the control panel(with rule of the game) to user to operate
-    public void displayControl(String userA, String userB, boolean isUserA){
-        if (isUserA==true){
-            System.out.printf("Please %s choose Your movement", userA);
-        }else {
-            System.out.printf("Please %s choose Your movement", userB);
-        }
+    public void displayControl(String username){
+        System.out.printf("%s turn\n", username);
+        System.out.println("1.Move\n");
+        System.out.println("2.Exit the game\n");
+//            System.out.printf("Please %s choose Your movement", username);
+    }
+    public void displayMovementPanel(String content){
+        displayMenu(content);
+//            System.out.printf("Please %s choose Your movement", username);
     }
 
     public void displayAskUsername(){
