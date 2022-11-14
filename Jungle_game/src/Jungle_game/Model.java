@@ -118,6 +118,10 @@ public class Model {
         int up = getUserIndex(pieceName);
         int rp = getRankIndex(pieceName);
         int rp2 = 0; 
+        if(land.equals("3")){
+            if(up == 0 && x == 1) return "not allow";
+            if(up == 1 && x == 9) return "not allow";
+        }
         if(rp == 0){
            if(piece == null) return "allow";
            if(up == getUserIndex(piece)) return "not allow";
@@ -137,16 +141,13 @@ public class Model {
             }
             return "not allow";
         }
-        if(land.equals("3")){
-            if(up == 0 && x == 1) return "not allow";
-            if(up == 1 && x == 9) return "not allow";
-        }
         if(piece == null) return "allow";
         if(up == getUserIndex(piece)) return "not allow";
         if(land.equals("2")){
             return "allow";
         }
         rp2 = getRankIndex(piece);
+        if(rp == 7 && rp2 == 0) return "not allow";
         if(rp2 <= rp) return "allow";
         return "not allow";
     }
