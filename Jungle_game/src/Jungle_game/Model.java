@@ -1,4 +1,4 @@
-package Jungle_game.src.Jungle_game;
+package Jungle_game;
 
 import java.util.ArrayList;
 import java.util.List;

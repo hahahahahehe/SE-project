@@ -1,6 +1,7 @@
-package Jungle_game.src.Test;
-import Jungle_game.src.Jungle_game.Model;
+package Test;
 
+
+import Jungle_game.Model;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

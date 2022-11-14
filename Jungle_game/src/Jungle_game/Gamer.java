@@ -4,7 +4,7 @@ import java.lang.String;
 
 public class Gamer {
 //    Fields
-    public Model linkedModel;
+    public Model linkedModel = new Model();
     public Viewer linkedViewer;
     public Controller linkedController;
 //    public String currentState;
