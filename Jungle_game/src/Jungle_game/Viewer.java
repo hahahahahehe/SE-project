@@ -13,7 +13,7 @@ public class Viewer {
 //    2. Refer to the User guide
 //    3. exit game
     public void displayMenu(String content){
-        print(content);
+        System.out.println(content);
     }
 
     //    display the user guide

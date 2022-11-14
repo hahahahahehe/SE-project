@@ -30,6 +30,8 @@ public class Model {
         BuserName = buserName;
     }
 
+    //board
+
     public String[][] getBoard() {
         return board;
     }

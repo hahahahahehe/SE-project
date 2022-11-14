@@ -2,10 +2,12 @@ package Jungle_game;
 
 
 
+import javax.swing.text.View;
 import java.util.Scanner;
 
 public class Controller {
     public Model linkedModel = new Model();
+    public Viewer linkedViewer = new Viewer();
 
     public void getuserAname(){
         String UserA;
@@ -28,14 +30,14 @@ public class Controller {
 //    enter 2: jump to user guide
 //    enter 3: quit the software
     public void evalMenu(){
-        if(userCommand == null) {
-            throw new IllegalArgumentException();
-        }
-        System.out.println("---------------Welcome to the Jungle Game!---------------");
-        System.out.println("1: Play Game");
-        System.out.println("2: Game Guide");
-        System.out.println("3: Exit");
-        System.out.println("Please input your option in integer:");
+
+        linkedViewer.displayMenu(
+                "---------------Welcome to the Jungle Game!---------------\n" +
+                        "1: Play Game\n" +
+                        "2: Game Guide\n" +
+                        "3: Exit\n" +
+                        "Please input your option in integer:\n"
+        );
         Scanner scanner= new Scanner(System.in);
         String option = scanner.next();
 
@@ -43,17 +45,17 @@ public class Controller {
         switch (option){
             case "1":{
                 System.out.println("Play Game");
-                displayAskUsername();
+                linkedViewer.displayAskUsername();
 
                 break;
             }
             case "2":{
-                displayUserGuide();
+                linkedViewer.displayUserGuide();
                 break;
             }
             case "3":{
                 System.out.println("Exit Now...");
-                break loop;
+                break;
             }
             default:{
                 System.out.println("Please input the correct value");
