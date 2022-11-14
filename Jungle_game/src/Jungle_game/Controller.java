@@ -66,15 +66,9 @@ public class Controller extends Gamer {
 
     }
 
-    /* evalGameFunction
-    Check whether still in the game status
-    */
-    public boolean evalGame() {
-        boolean flag = true;
-        //Check whether user win or not
-        return flag;
-    }
 
+    /*Function: gameStart
+    * Using while to ask user input until the user exit the game or any winner exist*/
     public void gameStart() {
         //Check is turn for User A(default is User A first)
         boolean isUserA = false;
@@ -98,17 +92,18 @@ public class Controller extends Gamer {
             int option = scanner.nextInt();
             switch (option) {
                 case 1: {
-                    linkedViewer.displayMenu("Please input what pieces you want to move:");
+                    linkedViewer.displayMovementPanel("Please input what pieces you want to move:");
                     String piecesChoose = scanner.next();
-                    linkedViewer.displayMenu("Please input which direction you want to move:");
+                    linkedViewer.displayMovementPanel("Please input the location you want to move:");
                     int directionChoose = scanner.nextInt();
                     //send pieces and direction to Model
                     //Update availablePieces
-                    //Check Whether still in the game status
-                    if(evalGame()){
-                        break loop;
+                    //Check Whether any user win the game
+                    if(linkedModel.winnerCheck().equals("not finish")){
+                        break ;
                     }else {
-                        break;
+                        System.out.printf("Congratulations",linkedModel.winnerCheck());
+                        break loop;
                     }
 //                     if (linkedModel.winnerCheck(linkedModel.alivePiecesCheck())){
 //                         return false;

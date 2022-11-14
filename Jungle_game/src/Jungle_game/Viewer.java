@@ -69,8 +69,7 @@ public class Viewer {
 //            System.out.printf("Please %s choose Your movement", username);
     }
     public void displayMovementPanel(String content){
-        displayMenu(content);
-//            System.out.printf("Please %s choose Your movement", username);
+        displayMovementPanel(content);
     }
 
     public void displayAskUsername(){
