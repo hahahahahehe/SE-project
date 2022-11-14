@@ -1,6 +1,7 @@
 package Jungle_game;
 
 
+
 import java.util.Scanner;
 
 public class Controller {
@@ -26,9 +27,37 @@ public class Controller {
 //    enter 1: jump to start game
 //    enter 2: jump to user guide
 //    enter 3: quit the software
-    public void evalMenu(String userCommand){
+    public void evalMenu(){
         if(userCommand == null) {
             throw new IllegalArgumentException();
+        }
+        System.out.println("---------------Welcome to the Jungle Game!---------------");
+        System.out.println("1: Play Game");
+        System.out.println("2: Game Guide");
+        System.out.println("3: Exit");
+        System.out.println("Please input your option in integer:");
+        Scanner scanner= new Scanner(System.in);
+        String option = scanner.next();
+
+        //linkedController.evalMenu(option);
+        switch (option){
+            case "1":{
+                System.out.println("Play Game");
+                displayAskUsername();
+
+                break;
+            }
+            case "2":{
+                displayUserGuide();
+                break;
+            }
+            case "3":{
+                System.out.println("Exit Now...");
+                break loop;
+            }
+            default:{
+                System.out.println("Please input the correct value");
+            }
         }
     }
 

@@ -40,15 +40,26 @@ public class Model {
 
     //    initialize the game and all the pieces
     public void init(){
-
+        board= new String[][]{
+                {"0A7", "0", "2", "3", "2", "0", "0A6"},
+                {"0", "0A3", "0", "2", "0", "0A2", "0"},
+                {"0A1", "0", "0A5", "0", "0A4", "0", "0A8"},
+                {"0", "1", "1", "0", "1", "1", "0"},
+                {"0", "1", "1", "0", "1", "1", "0"},
+                {"0", "1", "1", "0", "1", "1", "0"},
+                {"0B8", "0", "0B4", "0", "0B5", "0", "0B1"},
+                {"0", "0B2", "0", "2", "0", "0B3", "0"},
+                {"0B6", "0", "2", "3", "2", "0", "0B7"}
+        };
     }
 
     // The position is river/trap/den/land.
     // return a String represent position information
-    // "1" represents river, "2" represents trap,
-    // "3" den, "4" land, "5A1" piece
-    public String posiInfo(int x, int y){
+    // "RV" represents river, "TR" represents trap,
+    // "DE" den, "  " land, "A1" piece
+    public static String posiInfo(int x, int y){
         String posi= new String();
+        posi = board[x-1][y-1];
         return posi;
     }
 
