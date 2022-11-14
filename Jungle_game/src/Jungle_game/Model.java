@@ -7,7 +7,7 @@ public class Model {
 
 // Fields
     private String AuserName,BuserName;
-    public String[][] board = new String[9][];
+    public static String[][] board = new String[9][7];
 
 // Functions
 
