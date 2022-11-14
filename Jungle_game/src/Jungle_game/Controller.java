@@ -6,9 +6,21 @@ import javax.swing.text.View;
 import java.util.List;
 import java.util.Scanner;
 
-public class Controller extends Gamer {
+public class Controller{
+    public Model linkedModel ;
+    public Viewer linkedViewer;
+
     public String UserA, UserB;
 
+    public Controller() {
+    }
+
+    public Controller(Model linkedModel, Viewer linkedViewer, String userA, String userB) {
+        this.linkedModel = linkedModel;
+        this.linkedViewer = linkedViewer;
+        UserA = userA;
+        UserB = userB;
+    }
 
     public void getuserAname() {
 
@@ -71,6 +83,7 @@ public class Controller extends Gamer {
     * Using while to ask user input until the user exit the game or any winner exist*/
     public void gameStart() {
         //Check is turn for User A(default is User A first)
+        linkedModel.init();
         boolean isUserA = false;
         String username;
 
