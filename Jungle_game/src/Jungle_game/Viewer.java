@@ -34,7 +34,7 @@ public class Viewer {
                 }
                 case "3":{
                     System.out.println("Exit Now...");
-                    break;
+                    break loop;
                 }
                 default:{
                     System.out.println("Please input the correct value");
