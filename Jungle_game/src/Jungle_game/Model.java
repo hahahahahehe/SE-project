@@ -1,33 +1,69 @@
-package Jungle_game.src.Jungle_game;
+package Jungle_game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 
 public class Model {
+    private String AuserName;
+    private String BuserName;
+    public static String[][] board = new String[7][9];
 
-// Fields
-    private String AuserName,BuserName;
-    public String[][] board = new String[9][];
+    public void setAuserName(String auserName) {
+        AuserName = auserName;
+    }
+    public String getAuserName() {
+        return AuserName;
+    }
+
+
+    public String getBuserName() {
+        return BuserName;
+    }
+
+    public void setBuserName(String buserName) {
+        BuserName = buserName;
+    }
+
+
 
 // Functions
+
 
     //    get both user’s name
     private void getUsername(){
 
     }
 
-    //    initialize the game and all the pieces
+    //    initial the game and all the pieces
     public void init(){
+        board= new String[][]{
+                {"0A7", "0", "2", "3", "2", "0", "0A6"},
+                {"0", "0A3", "0", "2", "0", "0A2", "0"},
+                {"0A1", "0", "0A5", "0", "0A4", "0", "0A8"},
+                {"0", "1", "1", "0", "1", "1", "0"},
+                {"0", "1", "1", "0", "1", "1", "0"},
+                {"0", "1", "1", "0", "1", "1", "0"},
+                {"0B8", "0", "0B4", "0", "0B5", "0", "0B1"},
+                {"0", "0B2", "0", "2", "0", "0B3", "0"},
+                {"0B6", "0", "2", "3", "2", "0", "0B7"}
+        };
 
     }
 
     // The position is river/trap/den/land.
     // return a String represent position information
     // "1" represents river, "2" represents trap,
-    // "3" den, "4" land, "5A1" piece
+    // "3" den, "0" land, "0A1" piece
     public String posiInfo(int x, int y){
         String posi= new String();
         return posi;
+    }
+
+    public void setBoard(String[][] board) {
+        this.board = board;
+
     }
 
     // check is that any user fulfills the win condition
@@ -42,32 +78,33 @@ public class Model {
     }
 
     // return a Boolean value to check whether the position is available or not
-    public boolean posiCheck(int x, int y, String pieceName){
+    public boolean posiCheck(){
         boolean result = false;
         return result;
     }
 
     // Check whether the pieces are in which position,
     // return a list with two integer (x,y)
-    public int[] piecesInfo(String pieceName){
-        int[] coordinator=new int[2];
+    public int[][] piecesInfo(String pieces){
+
+        int[][] coordinator=new int[9][7];
+
         return coordinator;
     }
 
     // check the available chessman which is still alive
     // return a list of string (name of piece)
-    public List<String> alivePiecesCheck(){
-        List<String> alivePieceList = new ArrayList<String>();
-        return alivePieceList;
+    private List<String> alivePiecesCheck(){
+        List<String> PieceName = new ArrayList<String>();
+        return PieceName;
     }
 
-//  move the corresponding piece to a new position
-    public void move (String pieceName, int x , int y){
-    }
-
-//  remove the corresponding piece
-    public void remove (String pieceName){
-
+    //  move the corresponding piece by analysing command user entered
+//   direction: (1->up 2->down 3->left 4->right)
+    public void move (String userCommand){
+        if(userCommand == null){
+            throw new IllegalArgumentException();
+        }
     }
 
 }

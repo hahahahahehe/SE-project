@@ -1,18 +1,26 @@
 package Jungle_game;
-import java.util.List;
 import java.util.Scanner;
 
 
 public class Viewer {
-    public Controller linkedController;
-    Viewer testing = new Viewer();
+    public Model linkedModel = new Model();
+    public Controller linkedController = new Controller();
+    private String usernameA;
+    private String usernameB;
+
+    public static void main(String[] args) {
+
+        Viewer viewer = new Viewer();
+        viewer.displayMenu();
+
+    }
 
     //    Functions
 
     //  Display the main menu for user to
-    //    1. start the game(to username)
-    //    2. Refer to the User guide
-    //    3. exit game
+//    1. start the game(to username)
+//    2. Refer to the User guide
+//    3. exit game
     public void displayMenu(){
         loop: while (true){
             System.out.println("---------------Welcome to the Jungle Game!---------------");
@@ -22,10 +30,13 @@ public class Viewer {
             System.out.println("Please input your option in integer:");
             Scanner scanner= new Scanner(System.in);
             String option = scanner.next();
-            linkedController.evalMenu(option);
+
+            //linkedController.evalMenu(option);
             switch (option){
                 case "1":{
                     System.out.println("Play Game");
+                    displayAskUsername();
+
                     break;
                 }
                 case "2":{
@@ -45,13 +56,14 @@ public class Viewer {
         }
     }
 
-//    display the user guide
+    //    display the user guide
     public void displayUserGuide(){
         boolean displayMenu = true;
         loop: while (true){
             Scanner scanner = new Scanner(System.in);
             while (displayMenu){
-                System.out.println("displayUserGuide");
+                System.out.println("-------User Guide-------");
+                System.out.println("XXXXXXXXXXXXXX");
                 displayMenu =false;
             }
             System.out.println("-------Input Your Option-------");
@@ -78,23 +90,30 @@ public class Viewer {
 
     }
 
-//    display the (updated) chess board and pieces on it
+    //    display the (updated) chess board and pieces on it
 //    a question: whether the string[][] board is public or not?
     public void displayBoard(String[][] board){
+
+        System.out.println(board);
         if(board.length == 0 || board == null){
             throw new IllegalArgumentException();
         }
     }
 
-//    display the control panel(with rule of the game) to user to operate
+    //    display the control panel(with rule of the game) to user to operate
     public void displayControl(String userA, String userB, boolean isUserA){
-
+        if (isUserA==true){
+            System.out.printf("Please %s choose Your movement", userA);
+        }else {
+            System.out.printf("Please %s choose Your movement", userB);
+        }
     }
 
     public void displayAskUsername(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Plesae input Player 1 name:");
-        System.out.println("Plesae input Player 2 name:");
+        System.out.println("Please input UserA name:");
+        linkedController.getuserAname();
+        System.out.println("Please input UserB name:");
+        linkedController.getuserBname();
     }
 
 }
