@@ -46,7 +46,7 @@ public class Model{
     }
 
     //    initialize the game and all the pieces
-    private int getUserIndex(String pieceName){
+    public static int getUserIndex(String pieceName){
         if(pieceName.charAt(0) == 'A') return 0;
         if(pieceName.charAt(0) == 'B') return 1;
         return -1;

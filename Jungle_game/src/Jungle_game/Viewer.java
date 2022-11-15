@@ -57,23 +57,13 @@ public class Viewer{
 //    a question: whether the string[][] board is public or not?
     public void displayBoard(String[][] board){
 
-//        for (String[] traverseRow : board) {
-//            for (String ind : traverseRow) {
-//                System.out.printf("|%2s",ind);
-//            }
-//            System.out.println();
-//        }
-//        for (int row = 0; row < board.length; row++)
-//        {
-//            for (int ind = 0; ind < board[row].length; ind++) {
-//                System.out.print(board[row][ind] + " ");
-//            }
-//            System.out.println();
-//        }
-
-        if(board.length == 0 || board == null){
-            throw new IllegalArgumentException();
+        for (String[] traverseRow : board) {
+            for (String ind : traverseRow) {
+                System.out.printf("|%4s|",ind);
+            }
+            System.out.println();
         }
+
     }
 
     //    display the control panel(with rule of the game) to user to operate
