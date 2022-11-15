@@ -2,6 +2,8 @@ package Jungle_game;
 
 
 
+import com.sun.jdi.IntegerValue;
+
 import javax.swing.text.View;
 import java.util.List;
 import java.util.Scanner;
@@ -103,10 +105,14 @@ public class Controller{
             }
 
             linkedViewer.displayBoard(linkedModel.getBoard());
-            linkedViewer.displayControl(username);
-
+            String option;
             Scanner scanner = new Scanner(System.in);
-            String option = scanner.next();
+            linkedViewer.displayMenu("Please input an Integer");
+            do {
+                linkedViewer.displayControl(username);
+                option = scanner.nextLine();
+            }while (validInputCheck(option) == false);
+
 
 
             switch (option) {
@@ -118,11 +124,11 @@ public class Controller{
                     } while (vaildPiecesInput(piecesChoose, isUserA) == false);
 
 
-                    int directionChoose;
+                    String directionChoose;
                     do {
                         linkedViewer.displayMovementPanel("Please input the direction you want to move in Integer:");
                         linkedViewer.displayMovementPanel("left 0 right 1 up 2 down 3");
-                        directionChoose = scanner.nextInt();
+                        directionChoose = scanner.next();
                     } while (vaildDirectionInput(piecesChoose, directionChoose) == false);
 
                     //send pieces and direction to Model
@@ -153,11 +159,18 @@ public class Controller{
 
     public boolean vaildPiecesInput(String userInput, boolean isUserA){
         int validInput = Model.getUserIndex(userInput);
-        int userInputInt = Integer.parseInt(String.valueOf(userInput.charAt(1)));
-        if (  userInputInt <= 0 || userInputInt >= 9){
-            linkedViewer.displayMovementPanel("You Should input the pieces in range 1-8!");
+        if(userInput.length()==2){
+            int userInputInt = Integer.parseInt(String.valueOf(userInput.charAt(1)));
+            if (  userInputInt <= 0 || userInputInt >= 9){
+                linkedViewer.displayMovementPanel("You Should input the pieces in range 1-8!");
+                return false;
+            }
+        }
+        else {
+            linkedViewer.displayMovementPanel("Please input the pieces correctly and in range 1-8 ! e.g A4");
             return false;
         }
+
         if(isUserA ) {
             switch (validInput){
                 //0 represent the first char of user input is A
@@ -192,14 +205,27 @@ public class Controller{
 
         }
     }
-    public boolean vaildDirectionInput(String pieces, int directionChoose) {
-        String ValidCheck = linkedModel.move(pieces, directionChoose);
+    public boolean vaildDirectionInput(String pieces, String directionChoose) {
+        int directionChooseInt = Integer.parseInt(directionChoose);
+        String ValidCheck = linkedModel.move(pieces, directionChooseInt);
         if (ValidCheck.equals("ok")) {
             return true;
         } else {
             linkedViewer.displayMovementPanel("");
             return false;
         }
+    }
+
+    public boolean validInputCheck(String option){
+     switch (option){
+         case "1":
+         case "2":
+             return true;
+         default:{
+             linkedViewer.displayMenu("Please input the Integer 1 or 2 correctly!");
+             return false;
+         }
+     }
     }
 
 }
