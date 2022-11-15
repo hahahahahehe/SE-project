@@ -102,9 +102,11 @@ public class Controller{
             linkedViewer.displayControl(username);
 
             Scanner scanner = new Scanner(System.in);
-            int option = scanner.nextInt();
+            String option = scanner.next();
+
+
             switch (option) {
-                case 1: {
+                case "1": {
                     linkedViewer.displayMovementPanel("Please input what pieces you want to move:");
                     String piecesChoose = scanner.next();
                     linkedViewer.displayMovementPanel("Please input the location you want to move:");
@@ -122,8 +124,12 @@ public class Controller{
 //                         return false;
 //                     }
                 }
-                case 2: {
+                case "2": {
                     break loop;
+                }
+                default:{
+                    linkedViewer.displayMenu("Please input the correct value in Integer");
+                    break ;
                 }
             }
         }
