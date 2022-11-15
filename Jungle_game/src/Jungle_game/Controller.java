@@ -36,9 +36,8 @@ public class Controller{
     }
 
 //    Functions
-
-    //    check which command user entered
-//    enter 1: jump to start game
+//    check which command user entered
+//     1: jump to start game
 //    enter 2: jump to user guide
 //    enter 3: quit the game
     public void evalMenu() {
@@ -86,16 +85,21 @@ public class Controller{
         linkedModel.init();
         boolean isUserA = false;
         String username;
+        int vaildInput;
 
         loop:
         while (true) {
 
             if (isUserA == true) {
+                //Change to User B turn
                 isUserA = false;
                 username = linkedModel.getBuserName();
+                vaildInput = 1;
             } else {
+                //Change to User A turn
                 isUserA = true;
                 username = linkedModel.getAuserName();
+                vaildInput = 0;
             }
 
             linkedViewer.displayBoard(linkedModel.getBoard());
@@ -107,17 +111,27 @@ public class Controller{
 
             switch (option) {
                 case "1": {
-                    linkedViewer.displayMovementPanel("Please input what pieces you want to move:");
-                    String piecesChoose = scanner.next();
-                    linkedViewer.displayMovementPanel("Please input the location you want to move:");
-                    int directionChoose = scanner.nextInt();
+                    String piecesChoose;
+                    do {
+                        linkedViewer.displayMovementPanel("Please input what pieces you want to move:");
+                        piecesChoose = scanner.next().toUpperCase();
+                    } while (vaildPiecesInput(piecesChoose, isUserA) == false);
+
+
+                    int directionChoose;
+                    do {
+                        linkedViewer.displayMovementPanel("Please input the direction you want to move in Integer:");
+                        linkedViewer.displayMovementPanel("left 0 right 1 up 2 down 3");
+                        directionChoose = scanner.nextInt();
+                    } while (vaildDirectionInput(piecesChoose, directionChoose) == false);
+
                     //send pieces and direction to Model
                     //Update availablePieces
                     //Check Whether any user win the game
-                    if(linkedModel.winnerCheck().equals("not finish")){
-                        break ;
-                    }else {
-                        System.out.printf("Congratulations",linkedModel.winnerCheck());
+                    if (linkedModel.winnerCheck().equals("not finish")) {
+                        break;
+                    } else {
+                        System.out.printf("Congratulations", linkedModel.winnerCheck());
                         break loop;
                     }
 //                     if (linkedModel.winnerCheck(linkedModel.alivePiecesCheck())){
@@ -136,4 +150,56 @@ public class Controller{
 
 
     }
+
+    public boolean vaildPiecesInput(String userInput, boolean isUserA){
+        int validInput = Model.getUserIndex(userInput);
+        int userInputInt = Integer.parseInt(String.valueOf(userInput.charAt(1)));
+        if (  userInputInt <= 0 || userInputInt >= 9){
+            linkedViewer.displayMovementPanel("You Should input the pieces in range 1-8!");
+            return false;
+        }
+        if(isUserA ) {
+            switch (validInput){
+                //0 represent the first char of user input is A
+                case 0:{
+                    linkedViewer.displayMovementPanel("Valid Input");
+                    return true;
+                }
+                //1 represent the first char of user input is B
+                case 1:{
+                    linkedViewer.displayMovementPanel("Please move the A pieces only!");
+                    return false;
+                }
+                default:
+                    linkedViewer.displayMovementPanel("Please input the pieces correctly e.g A4");
+                    return false;
+            }
+        }else {
+            switch (validInput){
+                //0 represent the first char of user input is A
+                case 0:{
+                    linkedViewer.displayMovementPanel("Please move the B pieces only!");
+                    return false;
+                }
+                case 1:{
+                    linkedViewer.displayMovementPanel("Valid Input");
+                    return true;
+                }
+                default:
+                    linkedViewer.displayMovementPanel("Please input the pieces correctly e.g A4");
+                    return false;
+            }
+
+        }
+    }
+    public boolean vaildDirectionInput(String pieces, int directionChoose) {
+        String ValidCheck = linkedModel.move(pieces, directionChoose);
+        if (ValidCheck.equals("ok")) {
+            return true;
+        } else {
+            linkedViewer.displayMovementPanel("");
+            return false;
+        }
+    }
+
 }
