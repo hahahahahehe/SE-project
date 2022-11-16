@@ -137,10 +137,10 @@ public class Controller{
                     if (linkedModel.winnerCheck().equals("not finish")) {
                         break;
                     } else if(linkedModel.winnerCheck().equals("A win")){
-                        System.out.printf("Congratulations", linkedModel.getAuserName());
+                        System.out.printf("Congratulations %s Win the Game!", linkedModel.getAuserName());
                         break loop;
                     }else{
-                        System.out.printf("Congratulations", linkedModel.getBuserName());
+                        System.out.printf("Congratulations %s Win the Game!", linkedModel.getBuserName());
                         break loop;
                     }
                 }
