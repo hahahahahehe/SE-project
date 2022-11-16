@@ -136,13 +136,13 @@ public class Controller{
                     //Check Whether any user win the game
                     if (linkedModel.winnerCheck().equals("not finish")) {
                         break;
-                    } else {
-                        System.out.printf("Congratulations", linkedModel.winnerCheck());
+                    } else if(linkedModel.winnerCheck().equals("A win")){
+                        System.out.printf("Congratulations", linkedModel.getAuserName());
+                        break loop;
+                    }else{
+                        System.out.printf("Congratulations", linkedModel.getBuserName());
                         break loop;
                     }
-//                     if (linkedModel.winnerCheck(linkedModel.alivePiecesCheck())){
-//                         return false;
-//                     }
                 }
                 case "2": {
                     break loop;

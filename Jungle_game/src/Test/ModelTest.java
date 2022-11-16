@@ -1,4 +1,4 @@
-package Jungle_game;
+package Test;
 
 
 import Jungle_game.Model;
