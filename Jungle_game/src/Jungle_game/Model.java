@@ -69,7 +69,7 @@ public class Model{
                 {"0B6", "0", "2", "3", "2", "0", "0B7"}
         };
         pieceInfo = new int[][][]{
-            {{3,1},{2,6},{2,2},{3,5},{3,3},{1,7},{1,1},{3,7}},{{7,7},{8,2},{8,6},{7,3},{7,5},{9,3},{9,7},{7,1}}
+            {{3,1},{2,6},{2,2},{3,5},{3,3},{1,7},{1,1},{3,7}},{{7,7},{8,2},{8,6},{7,3},{7,5},{9,1},{9,7},{7,1}}
         };
         pieceNum = new int[]{8,8};
         win = -1;
@@ -213,6 +213,7 @@ public class Model{
             if(aim[0] < 1 || aim[0] > 9 || aim[1]<1||aim[1]>7) return "not allow";
             a = posiCheck(aim[0], aim[1], pieceName); 
             if(a.equals("allow")){
+                //System.out.printf("Test move1: %d %d\n" , aim[0] , aim[1]);
                 move(pieceName , aim[0] , aim[1]);
                 return "ok";
             }
@@ -220,6 +221,7 @@ public class Model{
                 return "not allow";
             }
             if(a.equals("jump")){
+                //System.out.printf("Test move2: %d %d\n" , aim[0] , aim[1]);
                 aim[0] += dif[0];
                 aim[1] += dif[1];
                 continue;
