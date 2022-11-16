@@ -121,7 +121,7 @@ public class Controller{
                     do {
                         linkedViewer.displayMovementPanel("Please input what pieces you want to move:");
                         piecesChoose = scanner.next().toUpperCase();
-                    } while (vaildPiecesInput(piecesChoose, isUserA) == false);
+                    } while (validPiecesInput(piecesChoose, isUserA) == false);
 
 
                     String directionChoose;
@@ -129,7 +129,7 @@ public class Controller{
                         linkedViewer.displayMovementPanel("Please input the direction you want to move in Integer:");
                         linkedViewer.displayMovementPanel("left 0 right 1 up 2 down 3");
                         directionChoose = scanner.next();
-                    } while (vaildDirectionInput(piecesChoose, directionChoose) == false);
+                    } while (validDirectionInput(piecesChoose, directionChoose) == false);
 
                     //send pieces and direction to Model
                     //Update availablePieces
@@ -157,7 +157,7 @@ public class Controller{
 
     }
 
-    public boolean vaildPiecesInput(String userInput, boolean isUserA){
+    public boolean validPiecesInput(String userInput, boolean isUserA){
         int validInput = Model.getUserIndex(userInput);
         if(userInput.length()==2){
             int userInputInt = Integer.parseInt(String.valueOf(userInput.charAt(1)));
@@ -205,15 +205,22 @@ public class Controller{
 
         }
     }
-    public boolean vaildDirectionInput(String pieces, String directionChoose) {
-        int directionChooseInt = Integer.parseInt(directionChoose);
-        String ValidCheck = linkedModel.move(pieces, directionChooseInt);
-        if (ValidCheck.equals("ok")) {
-            return true;
-        } else {
-            linkedViewer.displayMovementPanel("");
+    public boolean validDirectionInput(String pieces, String directionChoose) {
+        if (directionChoose=="0"||directionChoose == "1"||directionChoose=="2"||directionChoose=="3"){
+            int directionChooseInt = Integer.parseInt(directionChoose);
+            String ValidCheck = linkedModel.move(pieces, directionChooseInt);
+            if (ValidCheck.equals("ok")) {
+                return true;
+            } else {
+                linkedViewer.displayMovementPanel("Please input valid direction!");
+                return false;
+            }
+        }else {
+            linkedViewer.displayMovementPanel("Please input valid direction!");
             return false;
         }
+
+
     }
 
     public boolean validInputCheck(String option){
