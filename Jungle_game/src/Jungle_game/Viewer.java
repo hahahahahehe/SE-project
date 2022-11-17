@@ -69,8 +69,8 @@ public class Viewer{
     //    display the control panel(with rule of the game) to user to operate
     public void displayControl(String username){
         System.out.printf("%s turn\n", username);
-        System.out.println("1.Move\n");
-        System.out.println("2.Exit the game\n");
+        System.out.println("1.Move");
+        System.out.println("2.Exit the game");
 //            System.out.printf("Please %s choose Your movement", username);
     }
     public void displayMovementPanel(String content){

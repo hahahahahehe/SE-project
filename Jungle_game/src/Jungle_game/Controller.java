@@ -121,7 +121,7 @@ public class Controller{
                     do {
                         linkedViewer.displayMovementPanel("Please input what pieces you want to move:");
                         piecesChoose = scanner.next().toUpperCase();
-                    } while (vaildPiecesInput(piecesChoose, isUserA) == false);
+                    } while (validPiecesInput(piecesChoose, isUserA) == false);
 
 
                     String directionChoose;
@@ -129,7 +129,7 @@ public class Controller{
                         linkedViewer.displayMovementPanel("Please input the direction you want to move in Integer:");
                         linkedViewer.displayMovementPanel("left 0 right 1 up 2 down 3");
                         directionChoose = scanner.next();
-                    } while (vaildDirectionInput(piecesChoose, directionChoose) == false);
+                    } while (validDirectionInput(piecesChoose, directionChoose) == false);
 
                     //send pieces and direction to Model
                     //Update availablePieces
@@ -137,10 +137,13 @@ public class Controller{
                     if (linkedModel.winnerCheck().equals("not finish")) {
                         break;
                     } else if(linkedModel.winnerCheck().equals("A win")){
-                        System.out.printf("Congratulations %s Win the Game!\n", linkedModel.getAuserName());
+                        linkedViewer.displayMenu("Congratulations "+ linkedModel.getAuserName()+ " Win the Game!\n");
+                        linkedViewer.displayMenu("Returning to the Main Menu");
                         break loop;
                     }else{
-                        System.out.printf("Congratulations %s Win the Game!\n", linkedModel.getBuserName());
+                        linkedViewer.displayMenu("Congratulations "+ linkedModel.getBuserName()+ " Win the Game!\n");
+                        linkedViewer.displayMenu("Returning to the Main Menu");
+
                         break loop;
                     }
                 }
@@ -157,7 +160,7 @@ public class Controller{
 
     }
 
-    public boolean vaildPiecesInput(String userInput, boolean isUserA){
+    public boolean validPiecesInput(String userInput, boolean isUserA){
         int validInput = Model.getUserIndex(userInput);
         if(userInput.length()==2){
             int userInputInt = Integer.parseInt(String.valueOf(userInput.charAt(1)));
@@ -175,7 +178,6 @@ public class Controller{
             switch (validInput){
                 //0 represent the first char of user input is A
                 case 0:{
-                    linkedViewer.displayMovementPanel("Valid Input");
                     return true;
                 }
                 //1 represent the first char of user input is B
@@ -205,15 +207,22 @@ public class Controller{
 
         }
     }
-    public boolean vaildDirectionInput(String pieces, String directionChoose) {
-        int directionChooseInt = Integer.parseInt(directionChoose);
-        String ValidCheck = linkedModel.move(pieces, directionChooseInt);
-        if (ValidCheck.equals("ok")) {
-            return true;
-        } else {
-            linkedViewer.displayMovementPanel("");
+    public boolean validDirectionInput(String pieces, String directionChoose) {
+        if (directionChoose.equals("0")||directionChoose.equals("1")||directionChoose.equals("2")||directionChoose.equals("3")){
+            int directionChooseInt = Integer.parseInt(directionChoose);
+            String ValidCheck = linkedModel.move(pieces, directionChooseInt);
+            if (ValidCheck.equals("ok")) {
+                return true;
+            } else {
+                linkedViewer.displayMovementPanel("Please input valid direction!");
+                return false;
+            }
+        }else {
+            linkedViewer.displayMovementPanel("Please input valid direction!");
             return false;
         }
+
+
     }
 
     public boolean validInputCheck(String option){
