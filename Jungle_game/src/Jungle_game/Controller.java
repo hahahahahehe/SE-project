@@ -148,6 +148,7 @@ public class Controller{
                     }
                 }
                 case "2": {
+                    linkedViewer.displayMenu("Returning to the Main Menu");
                     break loop;
                 }
                 default:{
