@@ -206,7 +206,7 @@ public class Controller{
         }
     }
     public boolean validDirectionInput(String pieces, String directionChoose) {
-        if (directionChoose=="0"||directionChoose == "1"||directionChoose=="2"||directionChoose=="3"){
+        if (directionChoose.equals("0")||directionChoose.equals("1")||directionChoose.equals("2")||directionChoose.equals("3")){
             int directionChooseInt = Integer.parseInt(directionChoose);
             String ValidCheck = linkedModel.move(pieces, directionChooseInt);
             if (ValidCheck.equals("ok")) {
