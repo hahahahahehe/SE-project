@@ -197,7 +197,6 @@ public class Controller{
                     return false;
                 }
                 case 1:{
-                    linkedViewer.displayMovementPanel("Valid Input");
                     return true;
                 }
                 default:
