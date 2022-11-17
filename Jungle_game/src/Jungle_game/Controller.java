@@ -137,10 +137,12 @@ public class Controller{
                     if (linkedModel.winnerCheck().equals("not finish")) {
                         break;
                     } else if(linkedModel.winnerCheck().equals("A win")){
-                        System.out.printf("Congratulations %s Win the Game!", linkedModel.getAuserName());
+                        linkedViewer.displayMenu("Congratulations "+ linkedModel.getAuserName()+ " Win the Game!");
+                        linkedViewer.displayMenu("Returning to the Main Menu");
                         break loop;
                     }else{
-                        System.out.printf("Congratulations %s Win the Game!", linkedModel.getBuserName());
+                        linkedViewer.displayMenu("Congratulations "+ linkedModel.getBuserName()+ " Win the Game!");
+                        linkedViewer.displayMenu("Returning to the Main Menu");
                         break loop;
                     }
                 }
@@ -175,7 +177,6 @@ public class Controller{
             switch (validInput){
                 //0 represent the first char of user input is A
                 case 0:{
-                    linkedViewer.displayMovementPanel("Valid Input");
                     return true;
                 }
                 //1 represent the first char of user input is B
